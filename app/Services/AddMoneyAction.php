@@ -6,7 +6,7 @@ use App\Models\Transaction;
 
 class AddMoneyAction
 {
-    public function __invoke(object $inputData): int
+    public function __invoke(object $inputData): object
     {
         $transaction = Transaction::query()
             ->create([
@@ -14,6 +14,8 @@ class AddMoneyAction
                 'amount' => $inputData->amount,
             ]);
 
-        return $transaction->id;
+        return (object)[
+            'reference_id' => $transaction->id,
+        ];
     }
 }
