@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\GetBalanceController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/get-balance', GetBalanceController::class)->name('get-balance');
+Route::post('/add-money', AddMoneyController::class)->name('add-money');
