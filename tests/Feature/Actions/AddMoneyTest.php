@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Actions;
 
 use App\Models\Transaction;
 use App\Services\AddMoneyAction;

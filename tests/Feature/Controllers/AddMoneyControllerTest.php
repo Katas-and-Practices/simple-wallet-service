@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Tests\Feature\Controllers;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
