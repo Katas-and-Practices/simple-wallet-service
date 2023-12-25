@@ -21,7 +21,8 @@ class AddMoneyTest extends TestCase
 
         $result = ($action)($inputData);
 
-        $this->assertSame(1, $result->reference_id);
+        $this->assertIsString($result->reference_id);
+        $this->assertNotEmpty($result->reference_id);
         $this->assertDatabaseHas(Transaction::class, [
             'id' => 1,
             'user_id' => 5,

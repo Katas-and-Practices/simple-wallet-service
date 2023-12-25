@@ -18,6 +18,7 @@ class TransactionFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
+            'reference_id' => $this->faker->uuid(),
             'amount' => $this->faker->numberBetween(-10000, 10000),
         ];
     }
