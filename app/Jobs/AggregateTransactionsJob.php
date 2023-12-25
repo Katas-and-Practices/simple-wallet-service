@@ -26,9 +26,14 @@ class AggregateTransactionsJob implements ShouldQueue
         $end = now()->subRealDay()->endOfDay();
         $out = new ConsoleOutput();
 
-        (new AggregateTransactionsAction())($start, $end);
+        try {
+            (new AggregateTransactionsAction())($start, $end);
 
-        $out->writeln($now->toDateTimeString() . ' - Aggregated transactions from: ' . $start . ' to ' . $end);
+            $out->writeln($now->toDateTimeString() . ' - Aggregated transactions from: ' . $start . ' to ' . $end);
+        }
+        catch (\Exception) {
+            $out->writeln($now->toDateTimeString() . ' - No new transactions aggregated');
+        }
 
         $out->writeln('#####');
     }

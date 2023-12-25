@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Services\SumOfAllTransactionsWithAggregateAction;
 use App\Services\SumOfTransactionsAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,7 +25,7 @@ class PrintTotalTransactionsOnTerminalJob implements ShouldQueue
         $now = now();
         $out = new ConsoleOutput();
 
-        $sumOfAll = (new SumOfTransactionsAction())();
+        $sumOfAll = (new SumOfAllTransactionsWithAggregateAction())($now);
         $out->writeln($now->toDateTimeString() . ' - Sum of all transactions: ' . $sumOfAll->sum);
 
         $start = now()->startOfDay();
